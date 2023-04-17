@@ -7,13 +7,14 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Table(name = "ecommerceUser")
 public class User {
     @Id
     private int userId;
+    private String username;
     private String password;
 
     @Override
@@ -21,11 +22,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userId == user.userId && Objects.equals(password, user.password);
+        return userId == user.userId && username.equals(user.username) && password.equals(user.password);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, password);
+        return Objects.hash(userId, username, password);
     }
 }

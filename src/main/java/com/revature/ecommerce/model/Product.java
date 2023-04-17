@@ -7,12 +7,13 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Product {
     @Id
     private int productId;
+    private String productName;
     private double price;
 
     @Override
@@ -20,11 +21,12 @@ public class Product {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Product product = (Product) o;
-        return productId == product.productId && Double.compare(product.price, price) == 0;
+        return productId == product.productId && Double.compare(product.price
+                , price) == 0 && productName.equals(product.productName);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, price);
+        return Objects.hash(productId, productName, price);
     }
 }
