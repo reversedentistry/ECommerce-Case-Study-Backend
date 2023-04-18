@@ -30,7 +30,7 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Product> addProduct(Product product) {
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         Product newProduct = productService.addProductToDatabase(product);
         return ResponseEntity.status(200).body(newProduct);
     }
