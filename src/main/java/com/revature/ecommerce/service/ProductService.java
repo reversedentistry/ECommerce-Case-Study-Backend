@@ -18,4 +18,8 @@ public class ProductService {
     public Product getProduct(int productId) throws NoSuchElementException{
         return productRepo.findById(productId).get();
     }
+
+    public Product addProductToDatabase(Product product) {
+        return productRepo.save(product);
+    }
 }
