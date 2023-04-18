@@ -1,5 +1,6 @@
 package com.revature.ecommerce.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Objects;
@@ -7,13 +8,17 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Product {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int productId;
+
+    @NotNull
     private String productName;
+    @NotNull
     private double price;
 
     @Override

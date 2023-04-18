@@ -1,5 +1,6 @@
 package com.revature.ecommerce.model;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Objects;
@@ -7,14 +8,18 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
+@RequiredArgsConstructor
 @NoArgsConstructor
 @ToString
 @Table(name = "ecommerceUser")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int userId;
+
+    @NotNull
     private String username;
+    @NotNull
     private String password;
 
     @Override
