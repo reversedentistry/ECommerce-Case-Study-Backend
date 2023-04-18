@@ -14,11 +14,11 @@ public class UserService {
         return userRepo.save(user);
     }
 
-    public boolean userLogin(String username, String password) {
-        User loginAttempt = userRepo.findByUsername(username);
+    public boolean userLogin(User user) {
+        User loginAttempt = userRepo.findByUsername(user.getUsername());
         if (loginAttempt != null) {
             String userPassword = loginAttempt.getPassword();
-            return password.equals(userPassword);
+            return user.getPassword().equals(userPassword);
         } else {
             return false;
         }
