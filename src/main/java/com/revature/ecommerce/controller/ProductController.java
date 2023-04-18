@@ -4,9 +4,8 @@ import com.revature.ecommerce.model.Product;
 import com.revature.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.*;
 
 @RestController
@@ -21,12 +20,18 @@ public class ProductController {
     }
 
     @GetMapping("/{productId}")
-    public ResponseEntity<Product> getProduct(int productId) {
+    public ResponseEntity<Product> getProduct(@PathVariable int productId) {
         try {
             Product product = productService.getProduct(productId);
             return ResponseEntity.status(200).body(product);
         } catch (NoSuchElementException e) {
             return ResponseEntity.badRequest().build();
         }
+    }
+
+    @PostMapping
+    public ResponseEntity<Product> addProduct(Product product) {
+        Product newProduct = productService.addProductToDatabase(product);
+        return ResponseEntity.status(200).body(newProduct);
     }
 }
