@@ -4,15 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Getter
 @Setter
 public class OrderProduct {
@@ -20,36 +20,29 @@ public class OrderProduct {
     @JsonIgnore
     private OrderProductPk pk;
 
+    @ManyToOne
+    @MapsId("userId")
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @MapsId("productId")
+    @JoinColumn(name = "product_id")
+    private Product product;
+
     @NotNull
     private int quantity;
-
-    public OrderProduct(Order order, Product product, int quantity) {
-        pk = new OrderProductPk();
-        pk.setOrder(order);
-        pk.setProduct(product);
-        this.quantity = quantity;
-    }
-
-    @Transient
-    public Product getProduct() {
-        return this.pk.getProduct();
-    }
-
-    @Transient
-    public double getTotalPrice() {
-        return getProduct().getPrice() * getQuantity();
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderProduct that = (OrderProduct) o;
-        return quantity == that.quantity && Objects.equals(pk, that.pk);
+        return quantity == that.quantity && pk.equals(that.pk) && user.equals(that.user) && product.equals(that.product);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pk, quantity);
+        return Objects.hash(pk, user, product, quantity);
     }
 }

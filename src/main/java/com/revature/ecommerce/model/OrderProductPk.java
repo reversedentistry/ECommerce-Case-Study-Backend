@@ -1,5 +1,6 @@
 package com.revature.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,11 +14,11 @@ import java.util.Objects;
 public class OrderProductPk implements Serializable {
     private static final long serialVersionUID = 476151177562655457L;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_order_number")
-    private Order order;
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_product_id")
+    @JsonBackReference
+    @Column(name = "user_id")
+    private User user;
+
+    @Column(name = "product")
     private Product product;
 
     @Override
@@ -25,11 +26,11 @@ public class OrderProductPk implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OrderProductPk that = (OrderProductPk) o;
-        return order.equals(that.order) && product.equals(that.product);
+        return user.equals(that.user) && product.equals(that.product);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(order, product);
+        return Objects.hash(user, product);
     }
 }
