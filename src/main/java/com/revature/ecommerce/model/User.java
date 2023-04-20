@@ -1,9 +1,11 @@
 package com.revature.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sun.istack.NotNull;
 import lombok.*;
 import javax.persistence.*;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -23,16 +25,20 @@ public class User {
     @NotNull
     private String password;
 
+    @OneToMany
+    @JsonIgnore
+    private Set<OrderProduct> orders;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return userId == user.userId && username.equals(user.username) && password.equals(user.password);
+        return userId == user.userId && username.equals(user.username) && password.equals(user.password) && Objects.equals(orders, user.orders);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId, username, password);
+        return Objects.hash(userId, username, password, orders);
     }
 }
