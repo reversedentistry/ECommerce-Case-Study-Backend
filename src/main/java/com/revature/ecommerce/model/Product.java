@@ -1,9 +1,11 @@
 package com.revature.ecommerce.model;
 
+
 import com.sun.istack.NotNull;
 import lombok.*;
+
 import javax.persistence.*;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Getter
@@ -20,6 +22,9 @@ public class Product {
     private String productName;
     @NotNull
     private double price;
+
+//    @OneToMany(mappedBy = "product")
+//    private Set<OrderProduct> orders;
 
     @Override
     public boolean equals(Object o) {

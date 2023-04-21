@@ -1,6 +1,8 @@
-package com.revature.ecommerce.model;
+/*package com.revature.ecommerce.forlater;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.revature.ecommerce.model.Product;
+import com.revature.ecommerce.model.User;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -46,3 +48,4 @@ public class OrderProduct {
         return Objects.hash(pk, user, product, quantity);
     }
 }
+*/

@@ -1,6 +1,8 @@
-package com.revature.ecommerce.model;
+/*package com.revature.ecommerce.forlater;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.revature.ecommerce.model.Product;
+import com.revature.ecommerce.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +20,7 @@ public class OrderProductPk implements Serializable {
     @Column(name = "user_id")
     private User user;
 
-    @Column(name = "product")
+    @Column(name = "product_id")
     private Product product;
 
     @Override
@@ -34,3 +36,4 @@ public class OrderProductPk implements Serializable {
         return Objects.hash(user, product);
     }
 }
+*/

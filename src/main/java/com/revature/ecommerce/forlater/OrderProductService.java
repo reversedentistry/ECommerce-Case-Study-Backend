@@ -1,7 +1,5 @@
-package com.revature.ecommerce.service;
+/*package com.revature.ecommerce.forlater;
 
-import com.revature.ecommerce.model.OrderProduct;
-import com.revature.ecommerce.repository.OrderProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,3 +13,4 @@ public class OrderProductService {
         return orderProductRepo.save(orderProduct);
     }
 }
+*/

@@ -1,7 +1,5 @@
-package com.revature.ecommerce.repository;
+/*package com.revature.ecommerce.forlater;
 
-import com.revature.ecommerce.model.OrderProduct;
-import com.revature.ecommerce.model.OrderProductPk;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,3 +7,4 @@ import org.springframework.stereotype.Repository;
 public interface OrderProductRepository extends JpaRepository<OrderProduct,
         OrderProductPk> {
 }
+*/
