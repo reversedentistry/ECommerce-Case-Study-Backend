@@ -7,7 +7,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 class EcommerceApplicationTests {
 
 	@Test
-	void contextLoads() {
-	}
+	void checksIfCorrectlyFindingByUsername(){}
+
+	@Test
+	void checksForNonExistentUsername(){}
+
+	@Test
+	void checkIfUserLoginFindsCorrectUser(){}
+
+	@Test
+	void checkIfCorrectlyCreatingNewUser(){}
+
+	@Test
+	void checkIfUserLoginCorrectlyDoesNotFindUser(){}
 
 }

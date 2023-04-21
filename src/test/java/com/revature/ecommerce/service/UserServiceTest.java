@@ -48,7 +48,7 @@ class UserServiceTest {
     }
 
     @Test
-    void userLogin() {
+    void checkIfUserLoginFindsCorrectUser() {
         mock(User.class);
         mock(UserRepository.class);
 
@@ -58,4 +58,16 @@ class UserServiceTest {
         assertThat(userServiceTest.userLogin(user)).isEqualTo(true);
 
     }
+
+    @Test
+    void checkIfUserLoginCorrectlyDoesNotFindUser() {
+        mock(User.class);
+        mock(UserRepository.class);
+
+        User fakeUser = new User(999, "nonusername", "nonpassword");
+
+        when(userRepoMock.findByUsername(fakeUser.getUsername())).thenReturn(null);
+        assertThat(userServiceTest.userLogin(fakeUser)).isEqualTo(false);
+    }
+
 }

@@ -23,6 +23,7 @@ class UserRepositoryTest {
                 1,
                 "testuser",
                 "testpassword"
+                
         );
         userRepoTest.save(user);
     }
